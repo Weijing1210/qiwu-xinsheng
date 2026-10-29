@@ -16,7 +16,7 @@ function end(e){if(!drag)return;drag=null;root.classList.remove('dragging');if(m
 body.addEventListener('pointerup',end);body.addEventListener('pointercancel',end);
 body.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();guide()}});
 root.querySelector('.companion-fold').onclick=()=>{root.classList.toggle('folded');root.querySelector('.companion-fold').textContent=root.classList.contains('folded')?'小助手':'收起'};
-const guides={home:'欢迎来到器物新生。按空格或点击可跳过开场，选择一种工艺开始探索。',craft:'悬停查看步骤图，点击了解工艺细节；左右按钮可以翻看更多步骤。下方可选择修复实例。',quiz:'选择一个答案即可查看解析，完成后点击下一题。这里的器物为仿古修复示例，档案资料仍待核实。',puzzle:'把碎片拖到对应格子，放对就会锁定。也可先点击碎片，再点击格子；拼合后可查看三维器物。',model:'左键拖动旋转，滚轮缩放，Shift＋左键或右键平移；触屏可单指旋转、双指缩放。试试重置视角吧！'};
+const guides={home:'欢迎来到器物新生。按空格或点击可跳过开场，选择一种工艺开始探索。',craft:'悬停查看步骤图，点击了解工艺细节；左右按钮可以翻看更多步骤。下方可选择修复实例。',quiz:'选择一个答案即可查看解析，完成后点击下一题。这里展示的是现当代仿古器物修复示例。',puzzle:'把碎片拖到对应格子，放对就会锁定。也可先点击碎片，再点击格子；拼合后可查看三维器物。',model:'左键拖动旋转，滚轮缩放，Shift＋左键或右键平移；触屏可单指旋转、双指缩放。试试重置视角吧！'};
 function guide(kind){if(!kind){const route=location.hash.slice(1).split('/')[0];kind=route==='case'?(document.querySelector('.puzzle-panel')?'puzzle':'quiz'):route||'home'}react('hello',guides[kind]||guides.home)}
 window.qiwuCompanionGuide=guide;window.addEventListener('hashchange',()=>setTimeout(()=>guide(),250));
 window.addEventListener('resize',()=>{root.style.top=Math.max(85,Math.min(innerHeight-155,root.getBoundingClientRect().top))+'px'});guide();
